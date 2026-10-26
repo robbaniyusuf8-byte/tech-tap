@@ -98,7 +98,7 @@ app.get('/api/me', async (c) => {
     FROM sessions s 
     JOIN users u ON s.user_id = u.id 
     WHERE s.token = ?
-  `).bind(token).first<{ session_id: string; expires_at: string; user_id: string; email: string }>();
+  `).bind(token).first<{ session_id: string; expires_at: string; user_id: string; nama: string; email: string }>();
 
   if (!session || new Date(session.expires_at) < new Date()) {
     return c.json({ authenticated: false, error: 'Session expired atau tidak valid' }, 401);
